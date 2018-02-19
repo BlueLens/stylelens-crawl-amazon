@@ -198,3 +198,4 @@ venv.bak/
 .mypy_cache/
 
 .idea
+stylelens_crawl_amazon/data/browse_node_cache.txt

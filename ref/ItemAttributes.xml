@@ -1,0 +1,24 @@
+<ItemAttributes>
+    <Binding>Apparel</Binding>
+    <Brand>Alex Evenings</Brand>
+    <Department>womens</Department>
+    <Feature>2 piece set: sleeveless blouse and circle skirts</Feature>
+    <Feature>Concealed center back zipper</Feature>
+    <Feature>Sleeveless embroidered extended portrait collar blouse</Feature>
+    <Feature>Long Mikado circle skirt</Feature>
+    <Feature>Joanna chen design</Feature>
+    <Label>Alex Evenings</Label>
+    <Manufacturer>Alex Evenings</Manufacturer>
+    <PackageDimensions>
+       <Height Units="hundredths-inches">39</Height>
+       <Length Units="hundredths-inches">39</Length>
+       <Weight Units="Hundredths Pounds">100</Weight>
+       <Width Units="hundredths-inches">39</Width>
+    </PackageDimensions>
+    <PackageQuantity>1</PackageQuantity>
+    <ProductGroup>Apparel</ProductGroup>
+    <ProductTypeName>DRESS</ProductTypeName>
+    <Publisher>Alex Evenings</Publisher>
+    <Studio>Alex Evenings</Studio>
+    <Title>Alex Evenings Women's Two-Piece Dress With Portrait Collar Blouse and Satin Skirt</Title>
+ </ItemAttributes>

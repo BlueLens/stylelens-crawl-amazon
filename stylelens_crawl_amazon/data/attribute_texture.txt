@@ -1,0 +1,156 @@
+abstract
+abstract chevron
+abstract chevron print
+abstract diamond
+abstract floral
+abstract floral print
+abstract geo
+abstract geo print
+abstract paisley
+abstract pattern
+abstract print
+abstract printed
+abstract stripe
+animal
+animal print
+bandana
+bandana print
+baroque
+baroque print
+bird
+bird print
+botanical
+botanical print
+boxy striped
+breton
+breton stripe
+brushstroke
+brushstroke print
+butterfly
+butterfly print
+camo
+camouflage
+checked
+checkered
+cheetah
+chevron
+chevron print
+chiffon floral
+circle
+clashist
+classic striped
+colorblock
+colorblocked
+crochet floral
+daisy
+daisy print
+diamond
+diamond print
+ditsy
+ditsy floral
+ditsy floral print
+dot
+dots
+dotted
+embroidered floral
+floral
+floral flutter
+floral paisley
+floral pattern
+floral print
+floral textured
+floral-embroidered
+flower
+foil
+folk
+folk print
+geo
+geo pattern
+geo print
+geo stripe
+giraffe
+giraffe print
+graphic
+grid
+grid print
+heart
+heart print
+heathered stripe
+houndstooth
+ikat
+ikat print
+kaleidoscope
+kaleidoscope print
+knit stripe
+knit striped
+leaf
+leaf print
+leave
+leopard
+leopard print
+linen
+linen-blend
+mandala
+mandala print
+marble
+marble print
+marled
+marled stripe
+medallion
+medallion print
+mixed
+mixed print
+mixed stripe
+mosaic
+mosaic print
+multi-stripe
+nautical
+nautical stripe
+nautical striped
+ombre
+ornate
+ornate paisley
+ornate print
+paint
+paint splatter
+painted
+paisley
+paisley print
+palm
+palm print
+palm springs
+palm tree
+pattern
+patterned
+pinstripe
+pinstriped
+polka dot
+pom-pom
+print
+print shirt
+print woven
+printed
+ribbed stripe
+ringer
+rugby stripe
+rugby striped
+sophisticated
+southwestern
+southwestern-inspired
+southwestern-patterned
+southwestern-print
+speckled
+splatter
+spotted
+stripe
+striped
+stripes
+structured
+tonal
+tribal
+tribal-inspired
+two-tone
+varsity-striped
+watercolor
+zig
+zigzag

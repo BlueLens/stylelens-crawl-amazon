@@ -1,0 +1,56 @@
+Departments/Women/Clothing
+Departments/Women/Shops/Contemporary & Designer/Clothing
+Departments/Women/Shops/Juniors
+Departments/Women/Shops/Maternity
+Departments/Women/Shops/Petite
+Departments/Women/Shops/Plus-Size
+Departments/Women/Shops/Uniforms, Work & Safety/Clothing
+Departments/Men/Clothing
+Departments/Men/Shops/Contemporary & Designer/Clothing
+Departments/Men/Shops/Big & Tall
+Departments/Men/Shops/Uniforms, Work & Safety/Clothing
+Departments/Men/Shops/Surf, Skate & Street/Clothing
+Departments/Girls/Clothing
+Departments/Girls/Shops/School Uniforms/Clothing
+Departments/Boys/Clothing
+Departments/Boys/Shops/School Uniforms/Clothing
+Departments/Baby/Baby Girls/Clothing
+Departments/Baby/Baby Boys/Clothing
+Departments/Novelty & More/Clothing/Novelty/Women
+Departments/Novelty & More/Clothing/Novelty/Men
+Departments/Novelty & More/Clothing/Novelty/Girls
+Departments/Novelty & More/Clothing/Novelty/Boys
+Departments/Novelty & More/Clothing/Novelty/Baby
+Departments/Novelty & More/Clothing/Exotic Apparel/Women
+Departments/Novelty & More/Clothing/Exotic Apparel/Men
+Departments/Uniforms, Work & Safety/Clothing
+Departments/Traditional & Cultural Wear
+Featured Categories/Women/Clothing
+Featured Categories/Women/Shops/Contemporary & Designer/Clothing
+Featured Categories/Women/Shops/Juniors
+Featured Categories/Women/Shops/Maternity
+Featured Categories/Women/Shops/Petite
+Featured Categories/Women/Shops/Plus-Size
+Featured Categories/Women/Shops/Uniforms, Work & Safety/Clothing
+Featured Categories/Men/Clothing
+Featured Categories/Men/Shops/Contemporary & Designer/Clothing
+Featured Categories/Men/Shops/Big & Tall
+Featured Categories/Men/Shops/Uniforms, Work & Safety/Clothing
+Featured Categories/Men/Shops/Surf, Skate & Street/Clothing
+Featured Categories/Girls/Clothing
+Featured Categories/Girls/Shops/School Uniforms/Clothing
+Featured Categories/Boys/Clothing
+Featured Categories/Boys/Shops/School Uniforms/Clothing
+Featured Categories/Baby/Baby Girls/Clothing
+Featured Categories/Baby/Baby Boys/Clothing
+Featured Categories/Novelty, Costumes & More/Clothing/Novelty/Women
+Featured Categories/Novelty, Costumes & More/Clothing/Novelty/Men
+Featured Categories/Novelty, Costumes & More/Clothing/Novelty/Girls
+Featured Categories/Novelty, Costumes & More/Clothing/Novelty/Boys
+Featured Categories/Novelty, Costumes & More/Clothing/Novelty/Baby
+Featured Categories/Novelty, Costumes & More/Clothing/Band & Music Fan
+Featured Categories/Novelty, Costumes & More/Clothing/Movie & TV Fan
+Featured Categories/Novelty, Costumes & More/Clothing/Exotic Apparel/Women
+Featured Categories/Novelty, Costumes & More/Clothing/Exotic Apparel/Men
+Featured Categories/Uniforms, Work & Safety/Clothing
+Featured Categories/Traditional & Cultural Wear

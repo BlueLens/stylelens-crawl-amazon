@@ -1,2 +1,4 @@
 ItemAttributes
+Images
 Similarities
+Variations

@@ -199,3 +199,6 @@ venv.bak/
 
 .idea
 stylelens_crawl_amazon/data/browse_node_cache.txt
+
+search_log.txt
+lookup_log.txt

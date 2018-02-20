@@ -1,14 +1,14 @@
 from __future__ import absolute_import
-import bottlenose
-from bs4 import BeautifulSoup
-from .browse_nodes import BrowseNodes
-from .model.item_search import ItemSearch
 
+from stylelens_crawl_amazon.item_search import ItemSearch
+from stylelens_crawl_amazon.item_lookup import ItemLookup
+from .browse_nodes import BrowseNodes
 
 CATEGORIES     = 'stylelens_crawl_amazon/data/categories.txt'
 SEARCH_INDICES = 'stylelens_crawl_amazon/data/search_indices.txt'
 SORTS          = 'stylelens_crawl_amazon/data/sorts.txt'
-RESPONSE_GROUPS= 'stylelens_crawl_amazon/data/response_groups.txt'
+ITEM_SEARCH_RESPONSE_GROUPS= 'stylelens_crawl_amazon/data/item_search_response_groups.txt'
+ITEM_LOOKUP_RESPONSE_GROUPS= 'stylelens_crawl_amazon/data/item_lookup_response_groups.txt'
 ATTRIB_TEXTURE = 'stylelens_crawl_amazon/data/attribute_texture.txt'
 ATTRIB_FABRIC  = 'stylelens_crawl_amazon/data/attribute_fabric.txt'
 ATTRIB_SHAPE   = 'stylelens_crawl_amazon/data/attribute_shape.txt'
@@ -32,10 +32,13 @@ class SearchFactory(object):
 
   def search(self):
     for i in self._item_searches:
-      item_ids = i.search()
-      self._item_ids.append(list(item_ids))
-
-    print(item_ids)
+      items, similar_item_ids = i.search()
+      _item_lookups = self._lookup_similar_items(similar_item_ids)
+      for l in _item_lookups:
+        similar_items = l.lookup()
+        print(len(similar_items))
+      print(len(items))
+      print(len(similar_item_ids))
 
   def _init(self):
     self._browse_nodes = self._get_browse_nodes()
@@ -45,7 +48,8 @@ class SearchFactory(object):
     self._init_attributes()
     self._init_categories()
     self._init_search_indices()
-    self._init_response_groups()
+    self._init_item_search_response_groups()
+    self._init_item_lookup_response_groups()
     self._init_sorts()
     self._generate_keywords_small() # or self._generate_keywords_large()
     self._item_searches = self._generate_item_searchs()
@@ -53,8 +57,11 @@ class SearchFactory(object):
   def _init_categories(self):
     self._categories.extend(self._get_items(CATEGORIES))
 
-  def _init_response_groups(self):
-    self._response_groups.extend(self._get_items(RESPONSE_GROUPS))
+  def _init_item_search_response_groups(self):
+    self._response_groups.extend(self._get_items(ITEM_SEARCH_RESPONSE_GROUPS))
+
+  def _init_item_lookup_response_groups(self):
+    self._response_groups.extend(self._get_items(ITEM_LOOKUP_RESPONSE_GROUPS))
 
   def _init_sorts(self):
     self._sorts.extend(self._get_items(SORTS))
@@ -133,3 +140,25 @@ class SearchFactory(object):
       items.append(i.strip())
 
     return items
+
+  def _chunks(self, l, n):
+    for i in range(0, len(l), n):
+      yield l[i:i + n]
+
+  def _lookup_similar_items(self, item_ids):
+    response_groups = ','.join(self._response_groups)
+    for ids in self._chunks(item_ids, 10):
+      yield self._generate_item_lookup(item_ids=ids,
+                                       response_groups=response_groups)
+
+
+  def _generate_item_lookup(self,
+                            item_ids,
+                            search_index=None,
+                            response_groups=None):
+    i = ItemLookup(amazon=self._amazon, item_ids=item_ids)
+    i.response_groups = response_groups
+
+    return i
+
+

@@ -30,8 +30,7 @@ class ItemSearch(object):
   def search(self):
     page = 1
     total_pages = 0
-    # max_page = 10
-    max_page = 1
+    max_page = 10
     while True:
       res = self._amazon.ItemSearch(Keywords=self._keywords,
                               SearchIndex=self._search_index,

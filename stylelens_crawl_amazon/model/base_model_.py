@@ -7,8 +7,7 @@ T = TypeVar('T')
 
 
 class Model(object):
-    # SwaggerTypes: The key is attribute name and the value is attribute type.
-    bh_types = {}
+    bl_types = {}
 
     # attributeMap: The key is attribute name and the value is json key in definition.
     attribute_map = {}
@@ -28,7 +27,7 @@ class Model(object):
         """
         result = {}
 
-        for attr, _ in iteritems(self.bh_types):
+        for attr, _ in iteritems(self.bl_types):
             value = getattr(self, attr)
             if isinstance(value, list):
                 result[attr] = list(map(

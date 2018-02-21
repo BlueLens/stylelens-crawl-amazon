@@ -1,19 +1,20 @@
 from __future__ import absolute_import
 
+import os
 from stylelens_crawl_amazon.item_search import ItemSearch
 from stylelens_crawl_amazon.item_lookup import ItemLookup
 from .browse_nodes import BrowseNodes
 
-CATEGORIES     = 'stylelens_crawl_amazon/data/categories.txt'
-SEARCH_INDICES = 'stylelens_crawl_amazon/data/search_indices.txt'
-SORTS          = 'stylelens_crawl_amazon/data/sorts.txt'
-ITEM_SEARCH_RESPONSE_GROUPS= 'stylelens_crawl_amazon/data/item_search_response_groups.txt'
-ITEM_LOOKUP_RESPONSE_GROUPS= 'stylelens_crawl_amazon/data/item_lookup_response_groups.txt'
-ATTRIB_TEXTURE = 'stylelens_crawl_amazon/data/attribute_texture.txt'
-ATTRIB_FABRIC  = 'stylelens_crawl_amazon/data/attribute_fabric.txt'
-ATTRIB_SHAPE   = 'stylelens_crawl_amazon/data/attribute_shape.txt'
-ATTRIB_PART    = 'stylelens_crawl_amazon/data/attribute_part.txt'
-ATTRIB_STYLE   = 'stylelens_crawl_amazon/data/attribute_style.txt'
+CATEGORIES     = 'data/categories.txt'
+SEARCH_INDICES = 'data/search_indices.txt'
+SORTS          = 'data/sorts.txt'
+ITEM_SEARCH_RESPONSE_GROUPS= 'data/item_search_response_groups.txt'
+ITEM_LOOKUP_RESPONSE_GROUPS= 'data/item_lookup_response_groups.txt'
+ATTRIB_TEXTURE = 'data/attribute_texture.txt'
+ATTRIB_FABRIC  = 'data/attribute_fabric.txt'
+ATTRIB_SHAPE   = 'data/attribute_shape.txt'
+ATTRIB_PART    = 'data/attribute_part.txt'
+ATTRIB_STYLE   = 'data/attribute_style.txt'
 
 class SearchFactory(object):
   def __init__(self, amazon):
@@ -138,6 +139,8 @@ class SearchFactory(object):
 
 
   def _get_items(self, file=None):
+    this_dir, this_filename = os.path.split(__file__)
+    file = os.path.join(this_dir, file)
     items_ = open(file, 'r', encoding='UTF-8')
     items = []
     for i in items_.readlines():

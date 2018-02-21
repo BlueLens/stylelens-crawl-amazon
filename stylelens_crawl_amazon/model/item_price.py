@@ -12,7 +12,7 @@ class ItemPrice(Model):
                amount=None,
                currency_code=None,
                formatted_price=None):
-    self.swagger_types = {
+    self.bl_types = {
       'amount': str,
       'currency_code': str,
       'formatted_price': str
@@ -29,7 +29,7 @@ class ItemPrice(Model):
     self._formatted_price = formatted_price
 
   @classmethod
-  def from_dict(cls, dikt) -> 'ItemImage':
+  def from_dict(cls, dikt) -> 'ItemPrice':
     return deserialize_model(dikt, cls)
 
   @property

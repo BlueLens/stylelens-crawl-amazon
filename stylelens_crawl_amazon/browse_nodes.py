@@ -4,9 +4,9 @@ import bottlenose
 from bs4 import BeautifulSoup
 
 
-BROWSE_NODE_WHITE_LIST_FILE = 'stylelens_crawl_amazon/data/browse_nodes_white.txt'
-BROWSE_NODE_BLACK_LIST_FILE = 'stylelens_crawl_amazon/data/browse_nodes_black.txt'
-BROWSE_NODE_CACHE = 'stylelens_crawl_amazon/data/browse_node_cache.txt'
+BROWSE_NODE_WHITE_LIST_FILE = 'data/browse_nodes_white.txt'
+BROWSE_NODE_BLACK_LIST_FILE = 'data/browse_nodes_black.txt'
+BROWSE_NODE_CACHE = 'browse_node_cache.txt'
 
 class BrowseNodes(object):
   def __init__(self, name=[], id='7141123011'):
@@ -68,7 +68,9 @@ class BrowseNodes(object):
         return None
 
   def _get_white_list(self):
-    node_list = open(BROWSE_NODE_WHITE_LIST_FILE, 'r', encoding='UTF-8')
+    this_dir, this_filename = os.path.split(__file__)
+    file = os.path.join(this_dir, BROWSE_NODE_WHITE_LIST_FILE)
+    node_list = open(file, 'r', encoding='UTF-8')
     nodes = []
     for node in node_list.readlines():
       nodes.append(node.strip())
@@ -76,7 +78,9 @@ class BrowseNodes(object):
     return nodes
 
   def _get_black_list(self):
-    node_list = open(BROWSE_NODE_BLACK_LIST_FILE, 'r', encoding='UTF-8')
+    this_dir, this_filename = os.path.split(__file__)
+    file = os.path.join(this_dir, BROWSE_NODE_BLACK_LIST_FILE)
+    node_list = open(file, 'r', encoding='UTF-8')
     nodes = []
     for node in node_list.readlines():
       nodes.append(node.strip())

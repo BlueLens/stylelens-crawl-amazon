@@ -6,6 +6,7 @@ from datetime import date, datetime
 from typing import List, Dict
 from ..util import deserialize_model
 from .item_image import ItemImage
+from .item_price import ItemPrice
 
 
 class Item(Model):
@@ -30,7 +31,7 @@ class Item(Model):
                manufacturer=None,
                product_group=None,
                product_type_name=None):
-    self.swagger_types = {
+    self.bl_types = {
       'asin': str,
       'parent_asin': str,
       'detail_page_link': str,
@@ -45,7 +46,7 @@ class Item(Model):
       'color': str,
       'clothing_size': str,
       'size': str,
-      'price': str,
+      'price': ItemPrice,
       'features': List[str],
       'label': str,
       'manufacturer': str,
@@ -73,9 +74,7 @@ class Item(Model):
       'label': 'label',
       'manufacturer': 'manufacturer',
       'product_group': 'product_group',
-      'product_type_name': 'product_type_name',
-      'publisher': 'publisher',
-      'studio': 'studio'
+      'product_type_name': 'product_type_name'
     }
 
     self._asin = asin
@@ -216,11 +215,11 @@ class Item(Model):
     self._size = size
 
   @property
-  def price(self) -> str:
+  def price(self) -> ItemPrice:
     return self._price
 
   @price.setter
-  def price(self, price: str):
+  def price(self, price: ItemPrice):
     self._price = price
 
   @property

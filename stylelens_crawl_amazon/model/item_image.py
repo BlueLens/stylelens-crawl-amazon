@@ -13,7 +13,7 @@ class ItemImage(Model):
                height=None,
                width=None,
                unit=None):
-    self.swagger_types = {
+    self.bl_types = {
       'url': str,
       'height': str,
       'width': str,

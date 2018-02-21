@@ -11,7 +11,7 @@ import sys
 from setuptools import setup, find_packages
 
 NAME = "stylelens-crawl-amazon"
-VERSION = "0.0.1"
+VERSION = "0.0.2"
 # To install the library, run the following
 #
 # python setup.py install
@@ -19,7 +19,7 @@ VERSION = "0.0.1"
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 
-REQUIRES = ["pymongo"]
+REQUIRES = ["pymongo","bottlenose","bs4"]
 
 setup(
     name=NAME,

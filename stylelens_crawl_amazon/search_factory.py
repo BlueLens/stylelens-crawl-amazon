@@ -26,19 +26,23 @@ class SearchFactory(object):
     self._item_searches = []
     self._sorts = []
     self._response_groups = []
+    self._item_ids = {}
+    self._similar_item_ids = []
 
     self._init()
-    self._item_ids = []
 
   def search(self):
     for i in self._item_searches:
       items, similar_item_ids = i.search()
-      _item_lookups = self._lookup_similar_items(similar_item_ids)
-      for l in _item_lookups:
-        similar_items = l.lookup()
-        print(len(similar_items))
+      self._save_similar_item_ids(similar_item_ids)
+      yield items
+
+  def lookup_similar_items(self):
+    _item_lookups = self._lookup_similar_items()
+    for l in _item_lookups:
+      items = l.lookup()
       print(len(items))
-      print(len(similar_item_ids))
+      yield items
 
   def _init(self):
     self._browse_nodes = self._get_browse_nodes()
@@ -145,20 +149,23 @@ class SearchFactory(object):
     for i in range(0, len(l), n):
       yield l[i:i + n]
 
-  def _lookup_similar_items(self, item_ids):
+  def _lookup_similar_items(self ):
     response_groups = ','.join(self._response_groups)
-    for ids in self._chunks(item_ids, 10):
+    for ids in self._chunks(self._similar_item_ids, 10):
       yield self._generate_item_lookup(item_ids=ids,
                                        response_groups=response_groups)
 
 
   def _generate_item_lookup(self,
                             item_ids,
-                            search_index=None,
                             response_groups=None):
     i = ItemLookup(amazon=self._amazon, item_ids=item_ids)
     i.response_groups = response_groups
 
     return i
+
+  def _save_similar_item_ids(self, ids):
+    self._similar_item_ids.extend(ids)
+    self._similar_item_ids = list(set(self._similar_item_ids))
 
 

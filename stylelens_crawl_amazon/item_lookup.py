@@ -34,7 +34,7 @@ class ItemLookup(object):
     isValid = request.IsValid.text
     if isValid != 'True':
       print("isValid is not True")
-      return None, None
+      return None
 
     if items.Item:
       item = items.Item

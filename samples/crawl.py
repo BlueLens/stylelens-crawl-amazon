@@ -1,5 +1,6 @@
 from stylelens_crawl_amazon.stylelens_crawl import StylensCrawler
 
 sc = StylensCrawler()
-sc.start()
-print(sc)
+items = sc.get_items()
+for item in items:
+  print(item.asin)

@@ -32,6 +32,9 @@ class ItemSearch(object):
     total_pages = 0
     max_page = 10
     while True:
+      print('keyword = ' + self._keywords)
+      print('browsenode = ' + self._browse_node)
+      print('sort = ' + self._sort)
       res = self._amazon.ItemSearch(Keywords=self._keywords,
                               SearchIndex=self._search_index,
                               BrowseNode=self._browse_node,

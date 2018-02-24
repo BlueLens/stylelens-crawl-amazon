@@ -1,4 +1,5 @@
 from .aws_product_api import AwsProductApi
+import traceback
 
 class StylensCrawler(object):
   def __init__(self):
@@ -6,14 +7,24 @@ class StylensCrawler(object):
 
   def get_items(self):
     item_list = self._aws.item_search()
-    for items in item_list:
-      for item in items:
-        yield item
+    try:
+      for items in item_list:
+        for item in items:
+          yield item
+    except Exception as e:
+      print(e)
+      traceback.print_exc(limit=None)
+      yield None
 
   def get_similar_items(self):
     item_list = self._aws.item_lookups()
-    for items in item_list:
-      for item in items:
-        yield item
+    try:
+      for items in item_list:
+        for item in items:
+          yield item
+    except Exception as e:
+      print(e)
+      traceback.print_exc(limit=None)
+      yield None
 
 

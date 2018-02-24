@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 from stylelens_crawl_amazon.model import Item
 from stylelens_crawl_amazon.model import ItemImage
 from stylelens_crawl_amazon.model import ItemPrice
+import traceback
 
 
 class ItemSearch(object):
@@ -35,6 +36,7 @@ class ItemSearch(object):
       print('keyword = ' + self._keywords)
       print('browsenode = ' + self._browse_node)
       print('sort = ' + self._sort)
+      print('search_index = ' + self._search_index)
       res = self._amazon.ItemSearch(Keywords=self._keywords,
                               SearchIndex=self._search_index,
                               BrowseNode=self._browse_node,
@@ -84,30 +86,35 @@ class ItemSearch(object):
   def _extract_item(self, data, parent_detail_page=None, parent_add_to_wishlist_link=None):
     item = Item()
     item.asin = data.ASIN.text
-    if data.ParentASIN:
-      item.parent_asin = data.ParentASIN.text
+    try:
+      if data.ParentASIN:
+        item.parent_asin = data.ParentASIN.text
 
-    if data.DetailPageURL:
-      item.detail_page_link = data.DetailPageURL.text
-    elif parent_detail_page != None:
-      item.detail_page_link = parent_detail_page.replace(item.parent_asin, item.asin)
+      if data.DetailPageURL:
+        item.detail_page_link = data.DetailPageURL.text
+      elif parent_detail_page != None:
+        item.detail_page_link = parent_detail_page.replace(item.parent_asin, item.asin)
 
-    if data.ItemLinks:
-      item_link = data.ItemLinks.ItemLink
-      while True:
-        if item_link.Description:
-          if 'Add To Wishlist' == item_link.Description.text:
-            item.add_to_wishlist_link = item_link.URL.text
-        item_link = item_link.next_sibling
-        if not item_link:
-          break
-    elif parent_add_to_wishlist_link != None:
-      item.add_to_wishlist_link = parent_add_to_wishlist_link.replace(item.parent_asin, item.asin)
+      if data.ItemLinks:
+        item_link = data.ItemLinks.ItemLink
+        while True:
+          if item_link.Description:
+            if 'Add To Wishlist' == item_link.Description.text:
+              item.add_to_wishlist_link = item_link.URL.text
+          item_link = item_link.next_sibling
+          if not item_link:
+            break
+      elif parent_add_to_wishlist_link != None:
+        item.add_to_wishlist_link = parent_add_to_wishlist_link.replace(item.parent_asin, item.asin)
 
-    self._extract_images(item, data)
+      self._extract_images(item, data)
 
-    if data.ItemAttributes:
-      self._extract_item_attributes(item, data.ItemAttributes)
+
+      if data.ItemAttributes:
+        self._extract_item_attributes(item, data.ItemAttributes)
+    except Exception as e:
+      traceback.print_exc(limit=None)
+      return
 
     if item.m_image is not None:
       self._items.append(item)

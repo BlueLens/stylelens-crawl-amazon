@@ -2,6 +2,7 @@ from __future__ import absolute_import
 
 import os
 from stylelens_crawl_amazon.item_search import ItemSearch
+from stylelens_crawl_amazon.model.item_search_data import ItemSearchData
 from stylelens_crawl_amazon.item_lookup import ItemLookup
 from .browse_nodes import BrowseNodes
 
@@ -17,7 +18,7 @@ ATTRIB_PART    = 'data/attribute_part.txt'
 ATTRIB_STYLE   = 'data/attribute_style.txt'
 
 class SearchFactory(object):
-  def __init__(self, amazon):
+  def __init__(self, amazon, generate_item_searches=False):
     self._amazon = amazon
     self._keywords = []
     self._browse_nodes = {}
@@ -26,15 +27,18 @@ class SearchFactory(object):
     self._attrib_list = []
     self._item_searches = []
     self._sorts = []
-    self._response_groups = []
+    self._search_response_groups = []
+    self._lookup_response_groups = []
     self._item_ids = {}
     self._similar_item_ids = []
 
-    self._init()
+    if generate_item_searches == True:
+      self._init()
 
-  def search(self):
+  def search(self, item_searches):
     count = 0
-    for i in self._item_searches:
+
+    for i in item_searches:
       print('search index = ' + str(count))
       items, similar_item_ids = i.search()
       count = count + 1
@@ -48,6 +52,12 @@ class SearchFactory(object):
       print(len(items))
       yield items
 
+  def get_item_searches(self):
+    return self._item_searches
+
+  def get_similar_items(self):
+    return self._similar_item_ids
+
   def _init(self):
     self._browse_nodes = self._get_browse_nodes()
     if self._browse_nodes is None:
@@ -60,16 +70,16 @@ class SearchFactory(object):
     self._init_item_lookup_response_groups()
     self._init_sorts()
     self._generate_keywords_small() # or self._generate_keywords_large()
-    self._item_searches = self._generate_item_searchs()
+    self._item_searches = self._generate_item_searches()
 
   def _init_categories(self):
     self._categories.extend(self._get_items(CATEGORIES))
 
   def _init_item_search_response_groups(self):
-    self._response_groups.extend(self._get_items(ITEM_SEARCH_RESPONSE_GROUPS))
+    self._search_response_groups.extend(self._get_items(ITEM_SEARCH_RESPONSE_GROUPS))
 
   def _init_item_lookup_response_groups(self):
-    self._response_groups.extend(self._get_items(ITEM_LOOKUP_RESPONSE_GROUPS))
+    self._lookup_response_groups.extend(self._get_items(ITEM_LOOKUP_RESPONSE_GROUPS))
 
   def _init_sorts(self):
     self._sorts.extend(self._get_items(SORTS))
@@ -108,11 +118,11 @@ class SearchFactory(object):
         for a in attributes:
           self._keywords.append(a + ' ' + c)
 
-  def _generate_item_searchs(self):
+  def _generate_item_searches(self):
     for search_index in self._search_indices:
       for sort in self._sorts:
         for keyword in self._keywords:
-          response_groups = ','.join(self._response_groups)
+          response_groups = ','.join(self._search_response_groups)
           if search_index == 'Apparel':
             for browse_node in self._browse_nodes.values():
               yield self._generate_item_search(search_index=search_index,
@@ -133,11 +143,13 @@ class SearchFactory(object):
                             response_groups,
                             browse_node=None):
     i = ItemSearch(amazon=self._amazon)
-    i.search_index = search_index
-    i.browse_node = browse_node
-    i.sort = sort
-    i.response_groups = response_groups
-    i.keywords = keyword
+    data = ItemSearchData()
+    data.keywords = keyword
+    data.search_index = search_index
+    data.browse_node = browse_node
+    data.sort = sort
+    data.response_groups = response_groups
+    i.search_data = data
     return i
 
 
@@ -173,5 +185,4 @@ class SearchFactory(object):
   def _save_similar_item_ids(self, ids):
     self._similar_item_ids.extend(ids)
     self._similar_item_ids = list(set(self._similar_item_ids))
-
 

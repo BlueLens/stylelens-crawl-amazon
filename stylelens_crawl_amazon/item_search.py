@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 from stylelens_crawl_amazon.model import Item
 from stylelens_crawl_amazon.model import ItemImage
 from stylelens_crawl_amazon.model import ItemPrice
+from stylelens_crawl_amazon.model.item_search_data import ItemSearchData
 import traceback
 
 
@@ -27,6 +28,7 @@ class ItemSearch(object):
     self._item_page = item_page
     self._similar_item_ids = []
     self._items = []
+    self._item_search_data = None
 
   def search(self):
     page = 1
@@ -82,6 +84,14 @@ class ItemSearch(object):
         break
 
     return self._items, self._similar_item_ids
+
+  @property
+  def search_data(self) -> ItemSearchData:
+    return self._search_data
+
+  @search_data.setter
+  def search_data(self, search_data: ItemSearchData):
+    self._search_data = search_data
 
   def _extract_item(self, data, parent_detail_page=None, parent_add_to_wishlist_link=None):
     item = Item()
@@ -198,56 +208,6 @@ class ItemSearch(object):
       item.product_type_name = data.ProductTypeName.text
     if data.Title:
       item.title = data.Title.text
-
-  @property
-  def keywords(self) -> str:
-    return self._keywords
-
-  @keywords.setter
-  def keywords(self, keywords: str):
-    self._keywords = keywords
-
-  @property
-  def search_index(self) -> str:
-    return self._search_index
-
-  @search_index.setter
-  def search_index(self, search_index: str):
-    self._search_index = search_index
-
-  @property
-  def response_groups(self) -> str:
-    return self._response_groups
-
-  @response_groups.setter
-  def response_groups(self, response_groups: str):
-    self._response_groups = response_groups
-
-  @property
-  def browse_node(self) -> str:
-    return self._browse_node
-
-  @browse_node.setter
-  def browse_node(self, browse_node: str):
-    self._browse_node = browse_node
-
-  @property
-  def sort(self) -> str:
-    """
-    Sort values
-     - ref. : https://docs.aws.amazon.com/ko_kr/AWSECommerceService/latest/DG/LocaleUS.html
-    relevancerank
-    popularity-rank
-    price
-    -price
-    reviewrank
-    launch-date
-    """
-    return self._sort
-
-  @sort.setter
-  def sort(self, sort: str):
-    self._sort = sort
 
   @property
   def item_page(self) -> str:

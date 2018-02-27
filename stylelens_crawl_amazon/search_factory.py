@@ -36,12 +36,8 @@ class SearchFactory(object):
       self._init()
 
   def search(self, item_searches):
-    count = 0
-
     for i in item_searches:
-      print('search index = ' + str(count))
-      items, similar_item_ids = i.search()
-      count = count + 1
+      items, similar_item_ids = i.search(self._amazon)
       self._save_similar_item_ids(similar_item_ids)
       yield items
 

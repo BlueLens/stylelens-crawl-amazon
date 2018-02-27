@@ -1,6 +1,6 @@
 relevancerank
-popularity-rank
-price
--price
-reviewrank
-launch-date
+salesrank
+pricerank
+inverseprice
+-launch-date
+sale-flag

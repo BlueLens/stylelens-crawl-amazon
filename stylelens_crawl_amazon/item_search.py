@@ -11,41 +11,25 @@ import traceback
 
 class ItemSearch(object):
   def __init__(self,
-               amazon,
-               keywords=None,
-               search_index=None,
-               response_groups=None,
-               browse_node=None,
-               sort=None,
                item_page=None):
 
-    self._amazon = amazon
-    self._keywords = keywords
-    self._search_index = search_index
-    self._response_groups = response_groups
-    self._browse_node = browse_node
-    self._sort = sort
     self._item_page = item_page
     self._similar_item_ids = []
     self._items = []
-    self._item_search_data = None
+    self._search_data = None
 
-  def search(self):
+  def search(self, amazon):
     page = 1
     total_pages = 0
     max_page = 10
     while True:
-      print('keyword = ' + self._keywords)
-      print('browsenode = ' + self._browse_node)
-      print('sort = ' + self._sort)
-      print('search_index = ' + self._search_index)
-      res = self._amazon.ItemSearch(Keywords=self._keywords,
-                              SearchIndex=self._search_index,
-                              BrowseNode=self._browse_node,
+      res = amazon.ItemSearch(Keywords=self.search_data.keywords,
+                              SearchIndex=self.search_data.search_index,
+                              BrowseNode=self.search_data.browse_node,
                               Availability='Available',
                               ItemPage=page,
-                              Sort=self._sort,
-                              ResponseGroup=self._response_groups)
+                              Sort=self.search_data.sort,
+                              ResponseGroup=self.search_data.response_groups)
       soup = BeautifulSoup(res, "xml")
 
       # print(soup.prettify())

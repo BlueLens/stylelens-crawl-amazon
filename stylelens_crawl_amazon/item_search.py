@@ -23,13 +23,21 @@ class ItemSearch(object):
     total_pages = 0
     max_page = 10
     while True:
-      res = amazon.ItemSearch(Keywords=self.search_data.keywords,
-                              SearchIndex=self.search_data.search_index,
-                              BrowseNode=self.search_data.browse_node,
-                              Availability='Available',
-                              ItemPage=page,
-                              Sort=self.search_data.sort,
-                              ResponseGroup=self.search_data.response_groups)
+      if self.search_data.browse_node == None:
+        res = amazon.ItemSearch(Keywords=self.search_data.keywords,
+                                SearchIndex=self.search_data.search_index,
+                                Availability='Available',
+                                ItemPage=page,
+                                Sort=self.search_data.sort,
+                                ResponseGroup=self.search_data.response_groups)
+      else:
+        res = amazon.ItemSearch(Keywords=self.search_data.keywords,
+                                SearchIndex=self.search_data.search_index,
+                                BrowseNode=self.search_data.browse_node,
+                                Availability='Available',
+                                ItemPage=page,
+                                Sort=self.search_data.sort,
+                                ResponseGroup=self.search_data.response_groups)
       soup = BeautifulSoup(res, "xml")
 
       # print(soup.prettify())
@@ -176,6 +184,7 @@ class ItemSearch(object):
       p.amount = data.ListPrice.Amount.text
       p.currency_code = data.ListPrice.CurrencyCode.text
       p.formatted_price = data.ListPrice.FormattedPrice.text
+      item.price = p
 
     if data.Feature:
       item.features = []

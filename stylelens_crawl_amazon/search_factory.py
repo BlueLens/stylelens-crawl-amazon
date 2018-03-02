@@ -8,7 +8,8 @@ from .browse_nodes import BrowseNodes
 
 CATEGORIES     = 'data/categories.txt'
 SEARCH_INDICES = 'data/search_indices.txt'
-SORTS          = 'data/sorts.txt'
+SORTS_APPAREL  = 'data/sorts_Apparel.txt'
+SORTS_FASHION  = 'data/sorts_Fashion.txt'
 ITEM_SEARCH_RESPONSE_GROUPS= 'data/item_search_response_groups.txt'
 ITEM_LOOKUP_RESPONSE_GROUPS= 'data/item_lookup_response_groups.txt'
 ATTRIB_TEXTURE = 'data/attribute_texture.txt'
@@ -26,7 +27,8 @@ class SearchFactory(object):
     self._categories = []
     self._attrib_list = []
     self._item_searches = []
-    self._sorts = []
+    self._sorts_apparel = []
+    self._sorts_fashion = []
     self._search_response_groups = []
     self._lookup_response_groups = []
     self._item_ids = {}
@@ -64,7 +66,8 @@ class SearchFactory(object):
     self._init_search_indices()
     self._init_item_search_response_groups()
     self._init_item_lookup_response_groups()
-    self._init_sorts()
+    self._init_sorts_apparel()
+    self._init_sorts_fashion()
     self._generate_keywords_small() # or self._generate_keywords_large()
     self._item_searches = self._generate_item_searches()
 
@@ -77,8 +80,11 @@ class SearchFactory(object):
   def _init_item_lookup_response_groups(self):
     self._lookup_response_groups.extend(self._get_items(ITEM_LOOKUP_RESPONSE_GROUPS))
 
-  def _init_sorts(self):
-    self._sorts.extend(self._get_items(SORTS))
+  def _init_sorts_apparel(self):
+    self._sorts_apparel.extend(self._get_items(SORTS_APPAREL))
+
+  def _init_sorts_fashion(self):
+    self._sorts_fashion.extend(self._get_items(SORTS_FASHION))
 
   def _init_search_indices(self):
     self._search_indices.extend(self._get_items(SEARCH_INDICES))
@@ -116,17 +122,18 @@ class SearchFactory(object):
 
   def _generate_item_searches(self):
     for search_index in self._search_indices:
-      for sort in self._sorts:
-        for keyword in self._keywords:
-          response_groups = ','.join(self._search_response_groups)
-          if search_index == 'Apparel':
+      for keyword in self._keywords:
+        response_groups = ','.join(self._search_response_groups)
+        if search_index == 'Apparel':
+          for sort in self._sorts_apparel:
             for browse_node in self._browse_nodes.values():
               yield self._generate_item_search(search_index=search_index,
                                                sort=sort,
                                                keyword=keyword,
                                                response_groups=response_groups,
                                                browse_node=browse_node)
-          else:
+        else:
+          for sort in self._sorts_fashion:
             yield self._generate_item_search(search_index=search_index,
                                              sort=sort,
                                              keyword=keyword,
@@ -138,7 +145,7 @@ class SearchFactory(object):
                             keyword,
                             response_groups,
                             browse_node=None):
-    i = ItemSearch(amazon=self._amazon)
+    i = ItemSearch()
     data = ItemSearchData()
     data.keywords = keyword
     data.search_index = search_index

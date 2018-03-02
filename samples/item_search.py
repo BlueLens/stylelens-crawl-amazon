@@ -23,13 +23,13 @@ amazon = bottlenose.Amazon()
 page = 1
 max_page = 10
 while True:
-  response = amazon.ItemSearch(Keywords="pants",
-                               SearchIndex="",
+  response = amazon.ItemSearch(Keywords="open-back",
+                               SearchIndex="FashionWomen",
                                ItemPage=page,
-                               BrowseNode='1040660',
+                               BrowseNode=None,
                                Availability='Available',
-                               Sort='salesrank',
-                               ResponseGroup='ItemAttributes')
+                               Sort='launch-date',
+                               ResponseGroup='ItemAttributes,Images,Similarities,Variations')
   soup = BeautifulSoup(response, "xml")
 
   # print(soup)

@@ -121,19 +121,21 @@ class SearchFactory(object):
           self._keywords.append(a + ' ' + c)
 
   def _generate_item_searches(self):
+    response_groups = ','.join(self._search_response_groups)
+
     for search_index in self._search_indices:
-      for keyword in self._keywords:
-        response_groups = ','.join(self._search_response_groups)
-        if search_index == 'Apparel':
-          for sort in self._sorts_apparel:
-            for browse_node in self._browse_nodes.values():
+      if search_index == 'Apparel':
+        for sort in self._sorts_apparel:
+          for browse_node in self._browse_nodes.values():
+            for keyword in self._keywords:
               yield self._generate_item_search(search_index=search_index,
                                                sort=sort,
                                                keyword=keyword,
                                                response_groups=response_groups,
                                                browse_node=browse_node)
-        else:
-          for sort in self._sorts_fashion:
+      else:
+        for sort in self._sorts_fashion:
+          for keyword in self._keywords:
             yield self._generate_item_search(search_index=search_index,
                                              sort=sort,
                                              keyword=keyword,

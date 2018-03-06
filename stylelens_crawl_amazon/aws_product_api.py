@@ -16,7 +16,6 @@ class AwsProductApi(object):
       time.sleep(random.expovariate(0.5))
       return True
 
-
   def get_item_searches(self):
     return self._search_factory.get_item_searches()
 

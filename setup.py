@@ -11,7 +11,7 @@ import sys
 from setuptools import setup, find_packages
 
 NAME = "stylelens-crawl-amazon"
-VERSION = "0.0.37"
+VERSION = "0.0.38"
 # To install the library, run the following
 #
 # python setup.py install

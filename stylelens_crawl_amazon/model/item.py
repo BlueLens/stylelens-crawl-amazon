@@ -26,6 +26,8 @@ class Item(Model):
                clothing_size=None,
                size=None,
                price=None,
+               lowest_price=None,
+               highest_price=None,
                features=None,
                label=None,
                manufacturer=None,
@@ -47,6 +49,8 @@ class Item(Model):
       'clothing_size': str,
       'size': str,
       'price': ItemPrice,
+      'lowest_price': ItemPrice,
+      'highest_price': ItemPrice,
       'features': List[str],
       'label': str,
       'manufacturer': str,
@@ -70,6 +74,8 @@ class Item(Model):
       'clothing_size': 'clothing_size',
       'size': 'size',
       'price': 'price',
+      'lowest_price': 'lowest_price',
+      'highest_price': 'highest_price',
       'features': 'features',
       'label': 'label',
       'manufacturer': 'manufacturer',
@@ -92,6 +98,8 @@ class Item(Model):
     self._clothing_size = clothing_size
     self._size = size
     self._price = price
+    self._lowest_price = lowest_price
+    self._highest_price = highest_price
     self._features = features
     self._label = label
     self._manufacturer = manufacturer
@@ -221,6 +229,22 @@ class Item(Model):
   @price.setter
   def price(self, price: ItemPrice):
     self._price = price
+
+  @property
+  def lowest_price(self) -> ItemPrice:
+    return self._lowest_price
+
+  @lowest_price.setter
+  def lowest_price(self, lowest_price: ItemPrice):
+    self._lowest_price = lowest_price
+
+  @property
+  def highest_price(self) -> ItemPrice:
+    return self._highest_price
+
+  @highest_price.setter
+  def highest_price(self, highest_price: ItemPrice):
+    self._highest_price = highest_price
 
   @property
   def features(self) -> List[str]:

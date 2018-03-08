@@ -29,7 +29,7 @@ while True:
                                BrowseNode=None,
                                Availability='Available',
                                Sort='launch-date',
-                               ResponseGroup='ItemAttributes,Images,Similarities,Variations')
+                               ResponseGroup='ItemAttributes,Images,OfferSummary')
   soup = BeautifulSoup(response, "xml")
 
   # print(soup)

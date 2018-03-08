@@ -121,6 +121,9 @@ class ItemSearch(object):
     if item.m_image is not None:
       self._items.append(item)
 
+    if data.VariationSummary:
+      self._extract_variation_summary(item, data.VariationSummary)
+
     if data.Variations:
       self._extract_variations(data.Variations, item.detail_page_link, item.add_to_wishlist_link)
 
@@ -129,6 +132,22 @@ class ItemSearch(object):
       for product in similar_products:
         if product.ASIN:
           self._similar_item_ids.append(product.ASIN.text)
+
+  def _extract_variation_summary(self, item, data):
+
+    if data.LowestPrice:
+      p = ItemPrice()
+      p.amount = data.LowestPrice.Amount.text
+      p.currency_code = data.LowestPrice.CurrencyCode.text
+      p.formatted_price = data.LowestPrice.FormattedPrice.text
+      item.lowest_price = p
+
+    if data.HighestPrice:
+      p = ItemPrice()
+      p.amount = data.HighestPrice.Amount.text
+      p.currency_code = data.HighestPrice.CurrencyCode.text
+      p.formatted_price = data.HighestPrice.FormattedPrice.text
+      item.highest_price = p
 
   def _extract_variations(self, variations, parent_detail_page, parent_add_to_wishlist_link):
 
@@ -177,6 +196,8 @@ class ItemSearch(object):
       item.department = data.Department.text
     if data.Color:
       item.color = data.Color.text
+    if data.Size:
+      item.size = data.Size.text
     if data.ClothingSize:
       item.clothing_size = data.ClothingSize.text
     if data.ListPrice:
@@ -185,6 +206,8 @@ class ItemSearch(object):
       p.currency_code = data.ListPrice.CurrencyCode.text
       p.formatted_price = data.ListPrice.FormattedPrice.text
       item.price = p
+    else:
+      print('no price')
 
     if data.Feature:
       item.features = []

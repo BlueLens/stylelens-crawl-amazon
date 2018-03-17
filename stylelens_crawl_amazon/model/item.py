@@ -107,181 +107,226 @@ class Item(Model):
     self._product_type_name = product_type_name
 
   @classmethod
-  def from_dict(cls, dikt) -> 'Item':
+  def from_dict(cls, dikt):
     return deserialize_model(dikt, cls)
+  # from_dict.__annotations__ = {'return': 'Item'}
 
   @property
-  def asin(self) -> str:
+  def asin(self):
     return self._asin
+  # asin.__annotations__ = {'return': str}
 
   @asin.setter
-  def asin(self, asin: str):
+  def asin(self, asin):
     self._asin = asin
+  # asin.__annotations__ = {'asin':str}
 
   @property
-  def parent_asin(self) -> str:
+  def parent_asin(self):
     return self._parent_asin
+  # parent_asin.__annotations__ = {'return': str}
 
   @parent_asin.setter
-  def parent_asin(self, parent_asin: str):
+  def parent_asin(self, parent_asin):
     self._parent_asin = parent_asin
+  # parent_asin.__annotations__ = {'parent_asin': str}
 
   @property
-  def detail_page_link(self) -> str:
+  def detail_page_link(self):
     return self._detail_page_link
+  # detail_page_link.__annotations__ = {'return': str}
 
   @detail_page_link.setter
-  def detail_page_link(self, detail_page_link: str):
+  def detail_page_link(self, detail_page_link):
     self._detail_page_link = detail_page_link
+  # detail_page_link.__annotations__ = {'detail_page_link': str}
 
   @property
-  def add_to_wishlist_link(self) -> str:
+  def add_to_wishlist_link(self):
     return self._add_to_wishlist_link
+  # add_to_wishlist_link.__annotations__ = {'return': str}
 
   @add_to_wishlist_link.setter
-  def add_to_wishlist_link(self, add_to_wishlist_link: str):
+  def add_to_wishlist_link(self, add_to_wishlist_link):
     self._add_to_wishlist_link = add_to_wishlist_link
+  # add_to_wishlist_link.__annotations__ = {'add_to_wishlist_link': str}
 
   @property
-  def title(self) -> str:
+  def title(self):
     return self._title
+  # title.__annotations__ = {'return': str}
 
   @title.setter
-  def title(self, title: str):
+  def title(self, title):
     self._title = title
+  # title.__annotations__ = {'title': str}
 
   @property
-  def s_image(self) -> ItemImage:
+  def s_image(self):
     return self._s_image
+  # s_image.__annotations__ = {'return': ItemImage}
 
   @s_image.setter
-  def s_image(self, s_image: ItemImage):
+  def s_image(self, s_image):
     self._s_image = s_image
+  # s_image.__annotations__ = {'s_image': ItemImage}
 
   @property
-  def m_image(self) -> ItemImage:
+  def m_image(self):
     return self._m_image
+  # m_image.__annotations__ = {'return': ItemImage}
 
   @m_image.setter
-  def m_image(self, m_image: ItemImage):
+  def m_image(self, m_image):
     self._m_image = m_image
+  # m_image.__annotations__ = {'m_image': ItemImage}
 
   @property
-  def l_image(self) -> ItemImage:
+  def l_image(self):
     return self._l_image
+  # l_image.__annotations__ = {'l_image': ItemImage}
 
   @l_image.setter
-  def l_image(self, l_image: ItemImage):
+  def l_image(self, l_image):
     self._l_image = l_image
+  # l_image.__annotations__ = {'l_image': ItemImage}
 
   @property
-  def binding(self) -> str:
+  def binding(self):
     return self._binding
+  # binding.__annotations__ = {'return': str}
 
   @binding.setter
-  def binding(self, binding: str):
+  def binding(self, binding):
     self._binding = binding
+  # binding.__annotations__ = {'binding': str}
 
   @property
-  def brand(self) -> str:
+  def brand(self):
     return self._brand
+  # brand.__annotations__ = {'return': str}
 
   @brand.setter
-  def brand(self, brand: str):
+  def brand(self, brand):
     self._brand = brand
+  # brand.__annotations__ = {'brtand': str}
 
   @property
-  def department(self) -> str:
+  def department(self):
     return self._department
+  # department.__annotations__ = {'return': str}
 
   @department.setter
-  def department(self,  department: str):
+  def department(self,  department):
     self._department= department
+  # department.__annotations__ = {'department': str}
 
   @property
-  def color(self) -> str:
+  def color(self):
     return self._color
+  # color.__annotations__ = {'return': str}
 
   @color.setter
-  def color(self,  color: str):
+  def color(self,  color):
     self._color = color
+  # color.__annotations__ = {'color': str}
 
   @property
-  def clothing_size(self) -> str:
+  def clothing_size(self):
     return self._clothing_size
+  # clothing_size.__annotations__ = {'return': str}
 
   @clothing_size.setter
-  def clothing_size(self, clothing_size: str):
+  def clothing_size(self, clothing_size):
     self._clothing_size = clothing_size
+  # clothing_size.__annotations__ = {'clothing_size': str}
 
   @property
-  def size(self) -> str:
+  def size(self):
     return self._size
+  # size.__annotations__ = {'return': str}
 
   @size.setter
-  def size(self, size: str):
+  def size(self, size):
     self._size = size
+  # size.__annotations__ = {'size': str}
 
   @property
-  def price(self) -> ItemPrice:
+  def price(self):
     return self._price
+  # price.__annotations__ = {'return': ItemPrice}
 
   @price.setter
-  def price(self, price: ItemPrice):
+  def price(self, price):
     self._price = price
+  # price.__annotations__ = {'price': ItemPrice}
 
   @property
-  def lowest_price(self) -> ItemPrice:
+  def lowest_price(self):
     return self._lowest_price
+  # lowest_price.__annotations__ = {'return': ItemPrice}
 
   @lowest_price.setter
-  def lowest_price(self, lowest_price: ItemPrice):
+  def lowest_price(self, lowest_price):
     self._lowest_price = lowest_price
+  # lowest_price.__annotations__ = {'lowest_price': ItemPrice}
 
   @property
-  def highest_price(self) -> ItemPrice:
+  def highest_price(self):
     return self._highest_price
+  # highest_price.__annotations__ = {'return': ItemPrice}
 
   @highest_price.setter
-  def highest_price(self, highest_price: ItemPrice):
+  def highest_price(self, highest_price):
     self._highest_price = highest_price
+  # highest_price.__annotations__ = {'highest_price': ItemPrice}
 
   @property
-  def features(self) -> List[str]:
+  def features(self):
     return self._features
+  # features.__annotations__ = {'return': List[str]}
 
   @features.setter
-  def features(self, features: List[str]):
+  def features(self, features):
     self._features = features
+  # features.__annotations__ = {'features': List[str]}
 
   @property
-  def label(self) -> str:
+  def label(self):
     return self._label
+  # label.__annotations__ = {'return': str}
 
   @label.setter
-  def label(self, label: str):
+  def label(self, label):
     self._label = label
+  # label.__annotations__ = {'label': str}
 
   @property
-  def manufacturer(self) -> str:
+  def manufacturer(self):
     return self._manufacturer
+  # manufacturer.__annotations__ = {'return': str}
 
   @manufacturer.setter
-  def manufacturer(self, manufacturer: str):
+  def manufacturer(self, manufacturer):
     self._manufacturer = manufacturer
+  # manufacturer.__annotations__ = {'manufacturer': str}
 
   @property
-  def product_group(self) -> str:
+  def product_group(self):
     return self._product_group
+  # product_group.__annotations__ = {'return': str}
 
   @product_group.setter
-  def product_group(self, product_group: str):
+  def product_group(self, product_group):
     self._product_group = product_group
+  # product_group.__annotations__ = {'product_group': str}
 
   @property
-  def product_type_name(self) -> str:
+  def product_type_name(self):
     return self._product_type_name
+  # product_type_name.__annotations__ = {'return': str}
 
   @product_type_name.setter
-  def product_type_name(self, product_type_name: str):
+  def product_type_name(self, product_type_name):
     self._product_type_name= product_type_name
+  # product_type_name.__annotations__ = {'product_type_name': str}

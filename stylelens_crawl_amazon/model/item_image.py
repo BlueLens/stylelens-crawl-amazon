@@ -33,37 +33,46 @@ class ItemImage(Model):
     self._unit = unit
 
   @classmethod
-  def from_dict(cls, dikt) -> 'ItemImage':
+  def from_dict(cls, dikt):
     return deserialize_model(dikt, cls)
+  # from_dict.__annotations__ = {'return': 'ItemImage'}
 
   @property
-  def url(self) -> str:
+  def url(self):
     return self._url
+  # url.__annotations__ = {'return': str}
 
   @url.setter
-  def url(self, url: str):
+  def url(self, url):
     self._url = url
+  # url.__annotations__ = {'url': str}
 
   @property
-  def height(self) -> str:
+  def height(self):
     return self._height
+  # height.__annotations__ = {'return': str}
 
   @height.setter
-  def height(self, height: str):
+  def height(self, height):
     self._height = height
+  # height.__annotations__ = {'height': str}
 
   @property
-  def width(self) -> str:
+  def width(self):
     return self._width
+  # width.__annotations__ = {'return': str}
 
   @width.setter
-  def width(self, width: str):
+  def width(self, width):
     self._width= width
+  # width.__annotations__ = {'width': str}
 
   @property
-  def unit(self) -> str:
+  def unit(self):
     return self._unit
+  # unit.__annotations__ = {'return': str}
 
   @unit.setter
-  def unit(self, unit: str):
+  def unit(self, unit):
     self._unit = unit
+  # unit.__annotations__ = {'unit': str}

@@ -21,7 +21,7 @@ class ItemSearch(object):
   def search(self, amazon):
     page = 1
     total_pages = 0
-    max_page = 10
+    max_page = 1
     while True:
       if self.search_data.browse_node == None:
         res = amazon.ItemSearch(Keywords=self.search_data.keywords,
@@ -78,12 +78,14 @@ class ItemSearch(object):
     return self._items, self._similar_item_ids
 
   @property
-  def search_data(self) -> ItemSearchData:
+  def search_data(self):
     return self._search_data
+  # search_data.__annotations__ = {'return': ItemSearchData}
 
   @search_data.setter
-  def search_data(self, search_data: ItemSearchData):
+  def search_data(self, search_data):
     self._search_data = search_data
+  # search_data.__annotations__ = {'search_data': ItemSearchData}
 
   def _extract_item(self, data, parent_detail_page=None, parent_add_to_wishlist_link=None):
     item = Item()
@@ -151,6 +153,8 @@ class ItemSearch(object):
 
   def _extract_variations(self, variations, parent_detail_page, parent_add_to_wishlist_link):
 
+    max_count = 3
+    count = 1
     if variations.Item:
       item = variations.Item
     else:
@@ -161,6 +165,11 @@ class ItemSearch(object):
       item = item.next_sibling
       if not item:
         break
+      else:
+        count = count + 1
+        if count > max_count:
+          break
+
 
   def _extract_images(self, item_attributes, data):
     if data.SmallImage:
@@ -226,12 +235,14 @@ class ItemSearch(object):
       item.title = data.Title.text
 
   @property
-  def item_page(self) -> str:
+  def item_page(self):
     return self._item_page
+  # item_page.__annotations__ = {'return': str}
 
   @item_page.setter
-  def item_page(self, item_page: str):
+  def item_page(self, item_page):
     self._item_page = item_page
+  # item_page.__annotations__ = {'item_page': str}
 
   def _log(self, data):
     f = open('search_log.txt', 'a', encoding='UTF-8')

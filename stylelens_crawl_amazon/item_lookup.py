@@ -159,39 +159,47 @@ class ItemLookup(object):
       item.title = data.Title.text
 
   @property
-  def item_ids(self) -> List[str]:
+  def item_ids(self):
     return self._item_ids
+  # item_ids.__annotations__ = {'return': List[str]}
 
   @item_ids.setter
-  def item_ids(self, item_ids: List[str]):
+  def item_ids(self, item_ids):
     self._item_ids = item_ids
+  # item_ids.__annotations__ = {'item_ids': List[str]}
 
   @property
-  def search_index(self) -> str:
+  def search_index(self):
     return self._search_index
+  # search_index.__annotations__ = {'return': str}
 
   @search_index.setter
-  def search_index(self, search_index: str):
+  def search_index(self, search_index):
     self._search_index = search_index
+  # search_index.__annotations__ = {'search_index': str}
 
   @property
-  def response_groups(self) -> str:
+  def response_groups(self):
     return self._response_groups
+  # response_groups.__annotations__ = {'return': str}
 
   @response_groups.setter
-  def response_groups(self, response_groups: str):
+  def response_groups(self, response_groups):
     self._response_groups = response_groups
+  # response_groups.__annotations__ = {'response_groups': str}
 
   @property
-  def browse_node(self) -> str:
+  def browse_node(self):
     return self._browse_node
+  # browse_node.__annotations__ = {'return': str}
 
   @browse_node.setter
-  def browse_node(self, browse_node: str):
+  def browse_node(self, browse_node):
     self._browse_node = browse_node
+  # browse_node.__annotations__ = {'browse_node': str}
 
   @property
-  def sort(self) -> str:
+  def sort(self):
     """
     Sort values
      - ref. : https://docs.aws.amazon.com/ko_kr/AWSECommerceService/latest/DG/LocaleUS.html
@@ -203,18 +211,22 @@ class ItemLookup(object):
     launch-date
     """
     return self._sort
+  # sort.__annotations__ = {'return': str}
 
   @sort.setter
-  def sort(self, sort: str):
+  def sort(self, sort):
     self._sort = sort
+  # sort.__annotations__ = {'sort': str}
 
   @property
-  def item_page(self) -> str:
+  def item_page(self):
     return self._item_page
+  # item_page.__annotations__ = {'return': str}
 
   @item_page.setter
-  def item_page(self, item_page: str):
+  def item_page(self, item_page):
     self._item_page = item_page
+  # item_page.__annotations__ = {'item_page': str}
 
   def _log(self, data):
     f = open('lookup_log.txt', 'a', encoding='UTF-8')

@@ -13,11 +13,12 @@ class Model(object):
     attribute_map = {}
 
     @classmethod
-    def from_dict(cls: Type[T], dikt) -> T:
+    def from_dict(cls, dikt):
         """
         Returns the dict as a model
         """
         return deserialize_model(dikt, cls)
+    # from_dict.__annotations__ = {'cls': Type[T], 'return': T}
 
     def to_dict(self):
         """

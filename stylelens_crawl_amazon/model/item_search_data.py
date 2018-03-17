@@ -38,43 +38,52 @@ class ItemSearchData(Model):
     self._sort = sort
 
   @classmethod
-  def from_dict(cls, dikt) -> 'ItemSearchData':
+  def from_dict(cls, dikt):
     return deserialize_model(dikt, cls)
+  # from_dict.__annotations__ = {'return': 'ItemSearchData'}
 
   @property
-  def keywords(self) -> str:
+  def keywords(self):
     return self._keywords
+  # keywords.__annotations__ = {'return': str}
 
   @keywords.setter
-  def keywords(self, keywords: str):
+  def keywords(self, keywords):
     self._keywords = keywords
+  # keywords.__annotations__ = {'keywords': str}
 
   @property
-  def search_index(self) -> str:
+  def search_index(self):
     return self._search_index
+  # search_index.__annotations__ = {'return': str}
 
   @search_index.setter
-  def search_index(self, search_index: str):
+  def search_index(self, search_index):
     self._search_index = search_index
+  # search_index.__annotations__ = {'search_index': str}
 
   @property
-  def response_groups(self) -> str:
+  def response_groups(self):
     return self._response_groups
+  # response_groups.__annotations__ = {'return': str}
 
   @response_groups.setter
-  def response_groups(self, response_groups: str):
+  def response_groups(self, response_groups):
     self._response_groups = response_groups
+  # response_groups.__annotations__ = {'response_groups': str}
 
   @property
-  def browse_node(self) -> str:
+  def browse_node(self):
     return self._browse_node
+  # browse_node.__annotations__ = {'return': str}
 
   @browse_node.setter
-  def browse_node(self, browse_node: str):
+  def browse_node(self, browse_node):
     self._browse_node = browse_node
+  # browse_node.__annotations__ = {'browse_node': str}
 
   @property
-  def sort(self) -> str:
+  def sort(self):
     """
     Sort values
      - ref. : https://docs.aws.amazon.com/ko_kr/AWSECommerceService/latest/DG/LocaleUS.html
@@ -86,8 +95,10 @@ class ItemSearchData(Model):
     launch-date
     """
     return self._sort
+  # sort.__annotations__ = {'return': str}
 
   @sort.setter
-  def sort(self, sort: str):
+  def sort(self, sort):
     self._sort = sort
+  # sort.__annotations__ = {'sort': str}
 

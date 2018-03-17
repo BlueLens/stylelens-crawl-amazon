@@ -29,29 +29,36 @@ class ItemPrice(Model):
     self._formatted_price = formatted_price
 
   @classmethod
-  def from_dict(cls, dikt) -> 'ItemPrice':
+  def from_dict(cls, dikt):
     return deserialize_model(dikt, cls)
+  # from_dict.__annotations__ = {'return': 'ItemPrice'}
 
   @property
-  def amount(self) -> str:
+  def amount(self):
     return self._amount
+  # amount.__annotations__ = {'return': str}
 
   @amount.setter
-  def amount(self, amount: str):
+  def amount(self, amount):
     self._amount = amount
+  # amount.__annotations__ = {'amount': str}
 
   @property
-  def currency_code(self) -> str:
+  def currency_code(self):
     return self._currency_code
+  # currency_code.__annotations__ = {'return': str}
 
   @currency_code.setter
-  def currency_code(self, currency_code: str):
+  def currency_code(self, currency_code):
     self._currency_code = currency_code
+  # currency_code.__annotations__ = {'currency_code': str}
 
   @property
-  def formatted_price(self) -> str:
+  def formatted_price(self):
     return self._formatted_price
+  # formatted_price.__annotations__ = {'return': str}
 
   @formatted_price.setter
-  def formatted_price(self, formatted_price : str):
+  def formatted_price(self, formatted_price):
     self._formatted_price = formatted_price
+  # formatted_price.__annotations__ = {'formatted_price': str}

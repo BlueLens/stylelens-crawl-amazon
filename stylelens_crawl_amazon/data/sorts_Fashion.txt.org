@@ -3,3 +3,4 @@ popularity-rank
 price
 -price
 reviewrank
+launch-date

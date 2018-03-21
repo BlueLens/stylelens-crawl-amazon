@@ -21,7 +21,7 @@ class ItemSearch(object):
   def search(self, amazon):
     page = 1
     total_pages = 0
-    max_page = 1
+    max_page = 3
     while True:
       if self.search_data.browse_node == None:
         res = amazon.ItemSearch(Keywords=self.search_data.keywords,
@@ -153,7 +153,7 @@ class ItemSearch(object):
 
   def _extract_variations(self, variations, parent_detail_page, parent_add_to_wishlist_link):
 
-    max_count = 3
+    max_count = 2
     count = 1
     if variations.Item:
       item = variations.Item

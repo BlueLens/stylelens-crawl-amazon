@@ -2,8 +2,17 @@ from .aws_product_api import AwsProductApi
 import traceback
 
 class StylensCrawler(object):
-  def __init__(self, generate_item_searches=False):
-    self._aws = AwsProductApi(generate_item_searches=generate_item_searches)
+  def __init__(self,
+               generate_item_searches=False,
+               AWSAccessKeyId=None,
+               AWSSecretAccessKey=None,
+               AssociateTag=None,
+               Region=None):
+    self._aws = AwsProductApi(generate_item_searches=generate_item_searches,
+                              AWSAccessKeyId=AWSAccessKeyId,
+                              AWSSecretAccessKey=AWSSecretAccessKey,
+                              AssociateTag=AssociateTag,
+                              Region=Region)
 
   def get_item_searches(self):
     return self._aws.get_item_searches()

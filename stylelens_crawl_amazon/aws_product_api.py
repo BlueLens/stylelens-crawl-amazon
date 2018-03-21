@@ -11,8 +11,17 @@ from .search_factory import SearchFactory
 
 
 class AwsProductApi(object):
-  def __init__(self, generate_item_searches=False):
-    self._amazon = bottlenose.Amazon(ErrorHandler=self._error_handler)
+  def __init__(self,
+               generate_item_searches=False,
+               AWSAccessKeyId=None,
+               AWSSecretAccessKey=None,
+               AssociateTag=None,
+               Region=None):
+    self._amazon = bottlenose.Amazon(AWSAccessKeyId=AWSAccessKeyId,
+                                     AWSSecretAccessKey=AWSSecretAccessKey,
+                                     AssociateTag=AssociateTag,
+                                     Region=Region,
+                                     ErrorHandler=self._error_handler)
     self._search_factory = SearchFactory(self._amazon, generate_item_searches)
 
   def _error_handler(self, err):
